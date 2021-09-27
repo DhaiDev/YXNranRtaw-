@@ -1,0 +1,21 @@
+<ul class="list-group">
+
+    {% for topic in content %}
+        <li class="list-group-item  container-fluid clear">
+            <div class="left container-left">
+                <a href="/topic/?id={{ topic.id }}"> {{ topic.name }}</a>
+            </div>
+            <div class="right clear container-right">
+                <div class="left"> {{ topic.clicks }}</div>
+                <div class="left"> {{ topic.comments | length }}</div>
+            </div>
+        </li>
+    {% endfor %}
+    {% if not content.object_list %}
+        <div class="not-item">
+            <h4>No Topic Exists ! </h4>
+            <h4>Please <a href="/public/{{ content.subject.id }}/"> New Topic</a> !</h4>
+        </div>
+
+    {% endif %}
+</ul>

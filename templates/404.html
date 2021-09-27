@@ -1,0 +1,12 @@
+{% extends 'layout/base.html' %}
+
+{% block main %}
+    <div class="index">
+    {% if error %}
+        <h1 style="text-align: center">{{ error }}</h1>
+        {% else %}
+    <h1 style="text-align: center">Page Not Found</h1>
+    {% endif %}
+
+    </div>
+{% endblock %}

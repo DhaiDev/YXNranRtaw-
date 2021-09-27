@@ -1,0 +1,28 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+    主页
+{% endblock %}
+
+{% block main %}
+    <div>
+
+        {% for semester in content.object_list %}
+            <div class="panel panel-default">
+                {% include 'layout/panel_header.html' %}
+                {% include 'layout/semester_item.html' %}
+            </div>
+        {% endfor %}
+        {% if not content.object_list %}
+            <div class="panel panel-default comment-item not-comment" style="margin: 120px 0">
+                <div class="not-item">
+                    <h4>No Semester Exists ! </h4>
+                    <h4>Please contact the webmaster !</h4>
+                </div>
+
+            </div>
+        {% else %}
+            {% include 'layout/paging.html' %}
+        {% endif %}
+
+    </div>
+{% endblock %}

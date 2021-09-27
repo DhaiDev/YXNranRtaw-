@@ -1,0 +1,74 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+    主页
+{% endblock %}
+
+{% block main %}
+    <style>
+    .index {min-width: 605px}
+        .index > div {
+            width: 80%;
+            min-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container-left {
+            min-width: 150px;
+        }
+
+        .container-right {
+            min-width: 135px;
+
+        }
+
+        .search-right {
+            min-width: 341px;
+        }
+
+        .search-right > div {
+            padding: 0;
+            width: 85px;
+        }
+    </style>
+    <div>
+        <div class="panel-heading" style="background: #9e9e9e">
+            <div class="container-fluid clear" style="padding: 0">
+                <div class="left container-left">
+                    <strong>Search Results</strong>
+                </div>
+                {% if content.object_list %}
+                    <div class="right clear container-right search-right">
+                        <div class="left">semester</div>
+                        <div class="left">subject</div>
+                        <div class="left">clicks</div>
+                        <div class="left">comments</div>
+                    </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+        <ul class="list-group">
+            {% for topic in content %}
+                <li class="list-group-item  container-fluid clear">
+                    <div class="left container-left">
+                        <a href="/topic/?id={{ topic.id }}"> {{ topic.name }}</a>
+                    </div>
+                    <div class="right container-right clear search-right">
+                        <div class="left"> {{ topic.subject.semester.name }}</div>
+                        <div class="left"> {{ topic.subject.name }}</div>
+                        <div class="left"> {{ topic.clicks }}</div>
+                        <div class="left"> {{ topic.comments | length }}</div>
+                    </div>
+                </li>
+            {% endfor %}
+
+            {% if not content.object_list %}
+                <li class="not-item list-group-item  container-fluid clear">
+                    <h4>No Results ! </h4>
+                </li>
+            {% endif %}
+        </ul>
+        {% include 'layout/paging.html' %}
+    </div>
+{% endblock %}

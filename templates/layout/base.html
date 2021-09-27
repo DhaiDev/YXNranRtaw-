@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <!-- <link rel="stylesheet" href="{% static 'css/index.css' %}"> -->
+    {% block head %}
+
+    {% endblock %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body, #app, .main {
+        {#height: 100%;#} width: 100%;
+            background: #e1e1e1;
+            min-width: 508px;
+
+        }
+
+        .main {
+            min-height: 100%;
+            width: 100%;
+            min-width: 400px;
+            background: #e1e1e1;
+
+        }
+
+        .panel-default {
+            margin: 20px 30px;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .clear {
+            *zoom: 1; /* for IE 6/7 */
+        }
+
+        .clear:before, .clear:after {
+            height: 0;
+            content: "";
+            font-size: 0;
+            display: table;
+            line-height: 0; /* for Opera */
+            visibility: hidden;
+        }
+
+        .clear:after {
+            clear: both;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .header {
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .main > .register,
+        .main > .login {
+            width: 30%;
+            margin: 0 calc((100% - 450px) / 2);
+            min-width: 450px;
+            position: relative;
+            top: 50px;
+        }
+
+        .main > .register button,
+        .main > .login button {
+            width: 100%;
+        {#height: 100%;#}
+        }
+
+        .main > .index {
+
+            width: calc(100% - 100px);
+            height: calc(100% - 50px);
+            min-height: 500px;
+            margin: 50px 50px 0 50px;
+            padding: 15px 0;
+            background: white;
+            border-radius: 15px;
+        }
+
+        .main .container-fluid > :first-child {
+        }
+
+        .main .container-fluid > :last-child {
+            width: 35%;
+        }
+
+
+        .container-left {
+            min-width: 150px;
+        }
+
+        .container-right {
+            min-width: 135px;
+
+        }
+
+        .container-right > .left {
+            padding: 0 5px;
+            text-align: center;
+        }
+
+        .not-item > * {
+            margin: 15px 20px;
+            text-align: center;
+        }
+
+        .card-body > .clear > .right {
+            margin-right: 20px;
+        }
+
+        .card-body > div > h1 {
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .detail_markdown {
+            border-radius: 10px;
+            background: white;
+
+            padding: 30px 20px;
+        }
+
+        .detail_markdown img {
+            width: 80%;
+            align-content: center;
+            margin: 0 10%;
+
+        }
+
+        .comment-top > * {
+            margin: 20px;
+            font-weight: bolder;
+        }
+
+        .comment-item {
+            margin: 0 30px 50px 30px
+        }
+
+        .comment-line {
+            width: 100%;
+            border-bottom: #dfdfe0 2px solid;
+        }
+
+        .index > div {
+            width: 60%;
+            min-width: 400px;
+            margin: 0 auto;
+        }
+        #com .ql-editor{
+            min-height: 200px;
+        }
+        #pub  .ql-editor{
+        min-height: 500px;
+    }
+    </style>
+
+</head>
+<body>
+<div id="app">
+    <!--    导入 页头 -->
+    <div class="header">
+        {% include 'layout/header.html' %}
+    </div>
+
+    <div class="main">
+        <div class="index">
+            {% block main %}
+            {% endblock %}
+        </div>
+        <div style="height: 50px">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

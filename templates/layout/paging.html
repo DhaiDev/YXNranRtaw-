@@ -1,0 +1,85 @@
+<nav aria-label="Page navigation" style="width: 100%;text-align: center;overflow-x: hidden">
+    <ul class="pagination  pagination-lg">
+
+        <li>
+
+            {% if content.subject %}
+                <a href="?id={{ content.subject.id }}&page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+
+            {% elif content.topic %}
+                <a href="?id={{ content.topic.id }}&page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            {% elif content.search_value %}
+                <a href="?value={{ content.search_value }}&page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            {% else %}
+                <a href="?page=1" aria-label="Next">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            {% endif %}
+        </li>
+        {% for page_num in content.paginator.page_range %}
+
+            {% if content.subject %}
+                {% if content.number == page_num %}
+                    <li class="active"><a href="?id={{ content.subject.id }}&page={{ page_num }}">{{ page_num }}</a>
+                    </li>
+                {% elif page_num|add:-5 < content.number and  content.number <  page_num|add:5 %}
+                    <li><a href="?id={{ content.subject.id }}&page={{ page_num }}">{{ page_num }}</a></li>
+                {% endif %}
+            {% elif content.topic %}
+                {% if content.number == page_num %}
+                    <li class="active"><a href="?id={{ content.topic.id }}&page={{ page_num }}">{{ page_num }}</a></li>
+                {% elif page_num|add:-5 < content.number and  content.number <  page_num|add:5 %}
+                    <li><a href="?id={{ content.topic.id }}&page={{ page_num }}">{{ page_num }}</a></li>
+                {% endif %}
+            {% elif content.search_value %}
+                {% if content.number == page_num %}
+                    <li class="active">
+                        <a href="?value={{ content.search_value }}&page={{ page_num }}">{{ page_num }}</a>
+                    </li>
+
+                {% elif page_num|add:-5 < content.number and  content.number <  page_num|add:5 %}
+                    <li>
+                        <a href="?value={{ content.search_value }}&page={{ page_num }}">{{ page_num }}</a>
+                    </li>
+                {% endif %}
+
+            {% else %}
+                {% if content.number == page_num %}
+                    <li class="active"><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                {% elif page_num|add:-5 < content.number and  content.number <  page_num|add:5 %}
+                    <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                {% endif %}
+            {% endif %}
+
+
+
+        {% endfor %}
+        <li>
+            {% if content.subject %}
+                <a href="?id={{ content.subject.id }}&page={{ content.paginator.num_pages }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            {% elif content.topic %}
+                <a href="?id={{ content.topic.id }}&page={{ content.paginator.num_pages }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            {% elif content.search_value %}
+                <a href="?value={{ content.search_value }}&page={{ content.paginator.num_pages }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            {% else %}
+                <a href="?page={{ content.paginator.num_pages }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            {% endif %}
+
+        </li>
+    </ul>
+</nav>
+

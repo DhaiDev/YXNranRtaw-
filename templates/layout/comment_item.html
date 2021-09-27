@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+    <div class="comment-top clear">
+        <div class="left">
+           <strong>By: </strong> {{ comment.user.username }}
+        </div>
+
+        <div class="right">
+            {{ comment.created }}
+        </div>
+
+    </div>
+    <div class="comment-line"></div>
+    <div class="comment-detail detail_markdown">
+        {{ comment.content.html|safe }}
+    </div>
+
+</div>

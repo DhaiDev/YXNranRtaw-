@@ -1,0 +1,15 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+    主页
+{% endblock %}
+
+{% block main %}
+    <div class="">
+        <div class="panel panel-default">
+            {% include 'layout/panel_header.html' %}
+
+            {% include 'layout/topic_item.html' %}
+        </div>
+        {% include 'layout/paging.html' %}
+    </div>
+{% endblock %}

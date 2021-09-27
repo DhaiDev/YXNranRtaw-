@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-body" >
+        <div><h1>{{ content.topic.name }}</h1></div>
+        <div class="clear">
+            <div class="right">
+
+                <div><strong>By: {{ content.topic.user.username }}</strong></div>
+                <div><strong>{{ content.topic.created }}</strong></div>
+            </div>
+
+        </div>
+
+        <div class="detail_markdown">
+                {{ content.topic.content.html|safe }}
+            </div>
+
+    </div>
+</div>

@@ -1,0 +1,56 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+    Sign In
+{% endblock %}
+
+{% block main %}
+    <div class="login">
+        {% if error %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <strong>Warning!</strong> {{ error }}
+            </div>
+        {% endif %}
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="left">
+                    <h4>SIGN IN</h4>
+                </div>
+                <div class="right to-login">
+                    <h4><a href="{% url 'register' %}">To Sign up</a></h4>
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="Username">Username</label>
+                        <input type="text" class="form-control" id="Username" placeholder="Username"
+                               name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Password</label>
+                        <input type="password" class="form-control" id="Password" placeholder="Password"
+                               name="password">
+                    </div>
+                    <div class="clearfix a-line">
+                        <div class="checkbox left" style="margin-top: 0">
+                            <label style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                                <input type="checkbox"> Remember Me
+                            </label>
+                        </div>
+                        <div class="right" style="overflow: hidden;">
+                            <a href="{% url 'forget' %}" style="white-space: nowrap;text-overflow: ellipsis;">Forget
+                                Password</a>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

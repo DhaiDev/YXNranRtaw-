@@ -1,0 +1,56 @@
+{% load static %}
+
+<script src="{% static 'js/highlight.min.js' %}"></script>
+<script src="{% static 'js/quill.js' %}"></script>
+<script src="{% static 'js/django_quill.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/darcula.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/django_quill.css' %}">
+<link rel="stylesheet" href="{% static 'css/quill.snow.css' %}">
+
+{% include 'layout/comment_panel_header.html' %}
+<div class="panel panel-default comment-item input-box" style="display: none">
+    <div class="comment-detail detail_markdown">
+
+        <form action="/topic/" method="post" id="com">
+            <input type="text" value="{{ content.topic.id }}" name="topic" style="display:none">
+            {% csrf_token %}
+            {{ form.content }}
+
+            <button type="submit" class="btn-primary btn btn-block" style="margin-top: 20px"> 提交</button>
+        </form>
+
+
+    </div>
+
+</div>
+{% for comment in content %}
+    {% include 'layout/comment_item.html' %}
+
+{% endfor %}
+{% if not content.object_list %}
+    <div class="panel panel-default comment-item not-comment">
+        <li class="not-item">
+            <h4>No Comment Exists ! </h4>
+            <h4>Please <a href="javascript:void(0)" onclick="addComment() "> New Comment</a> !</h4>
+        </li>
+
+    </div>
+{% else %}
+    {% include 'layout/paging.html' %}
+{% endif %}
+
+<script>
+    function addComment() {
+        let inputBox = $('.input-box')[0]
+        let notComment = $('.not-comment')[0]
+        if (inputBox.style.display === 'none'){
+            inputBox.style.display='block'
+            notComment.style.display='none'
+        } else {
+            inputBox.style.display='none'
+            notComment.style.display='block'
+        }
+
+    }
+</script>
+

@@ -1,0 +1,22 @@
+<ul class="list-group">
+
+    {% for subject in semester.subjects %}
+        <li class="list-group-item  container-fluid clear">
+            <div class="left container-left">
+                    <a href="/semester/?id={{ subject.id }}"> {{ subject.name }}</a>
+            </div>
+            <div class="right container-right">
+               <div> {{ subject.topics | length }}</div>
+            </div>
+        </li>
+    {% endfor %}
+    {% if not semester.subjects %}
+        <div class="not-item">
+            <h4>No Subject Exists ! </h4>
+            <h4>Please <a href="/admin/forum/subject/add/"> New Subject</a> !</h4>
+        </div>
+    {% endif %}
+    {% if not semester %}
+        <h3>wwww</h3>
+    {% endif %}
+</ul>
